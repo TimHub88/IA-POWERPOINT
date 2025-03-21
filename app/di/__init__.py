@@ -1,0 +1,3 @@
+"""
+Dependency Injection container module
+"""
