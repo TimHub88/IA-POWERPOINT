@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: ai-powerpoint-generator
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DEEPSEEK_API_KEY
+        sync: false
+      - key: DEEPSEEK_API_URL
+        value: https://api.deepseek.com/v1/chat/completions
