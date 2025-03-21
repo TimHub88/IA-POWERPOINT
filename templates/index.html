@@ -3,94 +3,299 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI PowerPoint Generator</title>
+    <title>IA Création PowerPoint</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
-            padding-top: 2rem;
-            background-color: #f8f9fa;
+            font-family: 'Open Sans', sans-serif;
+            background-color: #F8F8F8;
+            margin: 0;
+            padding: 0;
         }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #D04623 0%, #7038D4 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeIn 1s ease-in-out;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
         .container {
             max-width: 800px;
+            position: relative;
+            z-index: 2;
         }
-        .header {
-            margin-bottom: 2rem;
-            text-align: center;
-        }
+        
         .card {
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
             margin-bottom: 2rem;
-        }
-        .form-control {
-            border-radius: 5px;
-        }
-        .btn-primary {
-            background-color: #0066cc;
             border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
+            transform: translateY(-50px);
+            background-color: white;
         }
+        
+        .form-control {
+            border-radius: 10px;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: #7038D4;
+            box-shadow: 0 0 0 0.25rem rgba(112, 56, 212, 0.25);
+        }
+        
+        .btn-primary {
+            background-color: #7038D4;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: #5c2eb8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(112, 56, 212, 0.3);
+        }
+        
+        .btn-success {
+            background-color: #D04623;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-success:hover {
+            background-color: #b83c1e;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(208, 70, 35, 0.3);
+        }
+        
         .spinner-border {
             display: none;
             margin-right: 8px;
         }
+        
         #result {
             display: none;
             margin-top: 2rem;
+            animation: slideUp 0.5s ease-out;
         }
+        
         #error {
             display: none;
             margin-top: 2rem;
+            animation: slideUp 0.5s ease-out;
+        }
+        
+        .alert-success {
+            background-color: #f0f8ff;
+            border-color: #7038D4;
+            color: #333;
+            border-radius: 10px;
+            padding: 20px;
+        }
+        
+        .alert-danger {
+            border-radius: 10px;
+            padding: 20px;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .card {
+                transform: translateY(-30px);
+            }
+        }
+        
+        .bottom-nav {
+            display: none;
+        }
+        
+        @media (max-width: 576px) {
+            .bottom-nav {
+                display: flex;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+                z-index: 1000;
+                justify-content: space-around;
+                padding: 10px 0;
+            }
+            
+            .nav-item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                font-size: 0.8rem;
+                color: #666;
+            }
+            
+            .nav-item.active {
+                color: #7038D4;
+            }
+            
+            .nav-icon {
+                font-size: 1.5rem;
+                margin-bottom: 4px;
+            }
+            
+            body {
+                padding-bottom: 70px;
+            }
         }
     </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>AI PowerPoint Generator</h1>
-            <p class="lead">Enter your prompt and we'll generate a PowerPoint presentation for you</p>
+    <div class="hero-section">
+        <div class="hero-shapes"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">IA PowerPoint Generator</h1>
+            <p class="hero-subtitle">Instantly create slide decks with AI-driven content</p>
         </div>
+    </div>
 
+    <div class="container">
         <div class="card">
             <div class="card-body">
                 <form id="prompt-form">
                     <div class="mb-3">
-                        <label for="prompt" class="form-label">What would you like in your presentation?</label>
-                        <textarea class="form-control" id="prompt" rows="4" required placeholder="E.g., Create a presentation about the history and impact of artificial intelligence, including its origins, major milestones, current applications, and future potential."></textarea>
-                        <div class="form-text">Be specific about the content and structure you want.</div>
+                        <label for="prompt" class="form-label fw-bold">Qu'est-ce qu'on crée aujourd'hui ?</label>
+                        <textarea class="form-control" id="prompt" rows="4" required placeholder="Je veux une présentation détaillée de 10 slides sur la Guerre Froide !"></textarea>
+                        <div class="form-text">Plus vous serez précis, plus la présentation sera pertinente.</div>
                     </div>
-                    <button type="submit" class="btn btn-primary">
+                    <div class="form-check form-switch mb-3">
+                        <input class="form-check-input" type="checkbox" id="include-images" checked>
+                        <label class="form-check-label" for="include-images">Inclure des images Pexels</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">
                         <span class="spinner-border spinner-border-sm" id="loading-spinner"></span>
-                        Generate Presentation
+                        Générer mon powerpoint
                     </button>
                 </form>
             </div>
         </div>
 
         <div class="alert alert-success" id="result">
-            <h4>Your presentation is ready!</h4>
-            <p id="slide-count"></p>
+            <h4 class="mb-3">Votre PowerPoint est prêt!</h4>
+            <p id="slide-count" class="mb-4"></p>
             <div class="d-grid gap-2">
-                <a href="#" id="download-link" class="btn btn-success" target="_blank">Download PowerPoint</a>
+                <a href="#" id="download-link" class="btn btn-success" target="_blank">
+                    <i class="bi bi-download me-2"></i>Télécharger PowerPoint
+                </a>
             </div>
         </div>
 
         <div class="alert alert-danger" id="error">
-            <h4>Oops! Something went wrong</h4>
+            <h4 class="mb-3">Oops! Une erreur est survenue</h4>
             <p id="error-message"></p>
         </div>
     </div>
 
+    <!-- Mobile Navigation -->
+    <div class="bottom-nav">
+        <div class="nav-item active">
+            <i class="bi bi-house-door nav-icon"></i>
+            <span>Accueil</span>
+        </div>
+        <div class="nav-item">
+            <i class="bi bi-file-earmark-slides nav-icon"></i>
+            <span>Mes Slides</span>
+        </div>
+        <div class="nav-item">
+            <i class="bi bi-person nav-icon"></i>
+            <span>Profil</span>
+        </div>
+    </div>
+
     <script>
+        // Add animated shapes to hero background
+        const heroShapes = document.querySelector('.hero-shapes');
+        for (let i = 0; i < 20; i++) {
+            const shape = document.createElement('div');
+            shape.style.position = 'absolute';
+            shape.style.width = Math.random() * 50 + 10 + 'px';
+            shape.style.height = shape.style.width;
+            shape.style.backgroundColor = 'white';
+            shape.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+            shape.style.opacity = Math.random() * 0.3 + 0.1;
+            shape.style.left = Math.random() * 100 + '%';
+            shape.style.top = Math.random() * 100 + '%';
+            shape.style.transform = `rotate(${Math.random() * 360}deg)`;
+            heroShapes.appendChild(shape);
+        }
+
         document.getElementById('prompt-form').addEventListener('submit', async function(e) {
             e.preventDefault();
             
             const promptInput = document.getElementById('prompt');
             const prompt = promptInput.value.trim();
+            const includeImages = document.getElementById('include-images').checked;
             
             if (!prompt) {
-                alert('Please enter a prompt');
+                alert('Veuillez entrer une description pour votre présentation');
                 return;
             }
             
@@ -106,22 +311,22 @@
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ prompt }),
+                    body: JSON.stringify({ prompt, includeImages }),
                 });
                 
                 const data = await response.json();
                 
                 if (!response.ok) {
-                    throw new Error(data.detail?.error || 'Failed to generate presentation');
+                    throw new Error(data.detail?.error || 'Échec de la génération de la présentation');
                 }
                 
                 // Show result
-                document.getElementById('slide-count').textContent = `Created ${data.slide_count} slides based on your prompt.`;
+                document.getElementById('slide-count').textContent = `${data.slide_count} slides ont été créés selon votre demande.`;
                 document.getElementById('download-link').href = data.file_url;
                 document.getElementById('result').style.display = 'block';
             } catch (error) {
                 // Show error
-                document.getElementById('error-message').textContent = error.message || 'An unexpected error occurred';
+                document.getElementById('error-message').textContent = error.message || 'Une erreur inattendue est survenue';
                 document.getElementById('error').style.display = 'block';
             } finally {
                 // Reset loading state
