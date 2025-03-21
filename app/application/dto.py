@@ -5,6 +5,7 @@ from pydantic import BaseModel, Field
 class SlideDTO(BaseModel):
     title: str
     description: str
+    image: Optional[str] = None
 
 
 class PresentationDTO(BaseModel):
@@ -23,4 +24,4 @@ class PresentationResponse(BaseModel):
 
 class ErrorResponse(BaseModel):
     error: str
-    details: Optional[str] = None
+    details: Optional[str] = None 
