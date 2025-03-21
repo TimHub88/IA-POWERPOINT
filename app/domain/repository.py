@@ -14,8 +14,15 @@ class PresentationRepository(ABC):
 
 class AIContentGenerator(ABC):
     @abstractmethod
-    async def generate_presentation(self, prompt: str) -> Optional[Presentation]:
+    async def generate_presentation(self, prompt: str, include_images: bool = True) -> Optional[Presentation]:
         """
         Generate a presentation from a user prompt.
+        
+        Args:
+            prompt: The user prompt
+            include_images: Whether to include images in the presentation
+            
+        Returns:
+            A Presentation object or None if generation failed
         """
-        pass
+        pass 
