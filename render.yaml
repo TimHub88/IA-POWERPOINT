@@ -8,4 +8,4 @@ services:
       - key: DEEPSEEK_API_KEY
         sync: false
       - key: DEEPSEEK_API_URL
-        value: https://api.deepseek.com/v1/chat/completions
+        value: https://api.deepseek.com/v1/chat/completions 
